@@ -12,27 +12,17 @@ class Task(object):
         return self.id == other.id
 
     def __lt__(self, other):
-        if self.length < other.length:
-            return True
-        else:
-            return self.priority > other.priority
-
-    def __le__(self, other):
-        if self.length <= other.length:
-            return True
-        else:
-            return self.priority > other.priority
+        return self.priority > other.priority or self.length < other.length
 
     def __str__(self):
-        return self.id + ", " + self.priority + ", " + self.length
+        return self.id + ", " + str(self.priority) + ", " + str(self.length)
 
 with open('Tasks.csv', 'r') as csvfile:
     reader = csv.DictReader(csvfile)
     tasks = []
     for row in reader:
         if (int(row['Completed']) == 0):
-            task = Task(row['ID'], row['Priority'], row['Length'])
-            # print task
+            task = Task(row['ID'], int(row['Priority']), int(row['Length']))
             tasks.append(task)
     for task in sorted(tasks):
         print task
