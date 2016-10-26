@@ -7,8 +7,7 @@
 4. As a manager I want to see the 10 most consumed products (beverages and food) so that I can make sure they are always available. (A0-4)
 5. As a manager I want to see all orders of products so that I can keep account on orders. (A0-5)
 6. As a manager I want to remove products that are not being sold. (A0-6)
-7. As a manager I want to approve orders of products so that we have stock of products. (A0-7)
-8. As a manager I want to remove/add cooks/bartenders/chefs/cashiers so that I can fire/hire them. (A0-8)
+7. As a manager I want to remove/add cooks/bartenders/chefs/cashiers so that I can fire/hire them. (A0-7)
 
 ## Stock
 1. As a stock employee I want to create orders of products so that we don't run out of stock. (B0-1)
