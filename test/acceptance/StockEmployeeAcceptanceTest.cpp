@@ -19,3 +19,11 @@ TEST_F(ALocalStock, EmptyLocalStockDoesntContainIngreidient) {
 
   ASSERT_THAT(localStock.contains(ingredient), Eq(false));
 }
+
+TEST_F(ALocalStock, IngredientIsInStockAfterAddingIngredient) {
+  Ingredient ingredient("ham");
+
+  localStock.add(ingredient);
+
+  ASSERT_THAT(localStock.contains(ingredient), Eq(true));
+}

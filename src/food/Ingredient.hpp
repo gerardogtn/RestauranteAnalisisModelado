@@ -6,9 +6,17 @@
 
 class Ingredient {
  private:
-  std::string name;
+  std::string name = "";
  public:
   explicit Ingredient(std::string name) : name(name) {}
+
+  bool operator==(const Ingredient& other) const {
+    return name == other.name;
+  }
+
+  bool operator!=(const Ingredient& other) const {
+    return !(*this == other);
+  }
 };
 
 #endif  // FOOD_INGREDIENT_H
