@@ -5,14 +5,16 @@
 
 using namespace testing;
 
-TEST(ALocalStock, LocalStockIsEmptyWhenCreated) {
+class ALocalStock : public Test {
+ public:
   LocalStock localStock;
+};
 
+TEST_F(ALocalStock, LocalStockIsEmptyWhenCreated) {
   ASSERT_THAT(localStock.isEmpty(), Eq(true));
 }
 
-TEST(ALocalStock, EmptyLocalStockDoesntContainIngreidient) {
-  LocalStock localStock;
+TEST_F(ALocalStock, EmptyLocalStockDoesntContainIngreidient) {
   Ingredient ingredient("ham");
 
   ASSERT_THAT(localStock.contains(ingredient), Eq(false));
