@@ -5,8 +5,14 @@
 
 using namespace testing;
 
-TEST(ADrink, TwoDrinksWithSameNameAreEqual) {
-  Drink sprite("sprite");
+class SpriteDrink : public Test {
+ public:
+  Drink sprite;
+
+  SpriteDrink() : sprite("sprite") {}
+};
+
+TEST_F(SpriteDrink, TwoDrinksWithSameNameAreEqual) {
   Drink other("sprite");
 
   ASSERT_THAT(sprite, Eq(other));
