@@ -16,6 +16,10 @@ class Drink {
     return name == other.name;
   }
 
+  bool operator!=(const Drink& other) const {
+    return !(*this == other);
+  }
+
   friend std::ostream& operator<<(std::ostream& os, const Drink& drink);
 };
 

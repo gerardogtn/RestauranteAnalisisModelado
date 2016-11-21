@@ -19,6 +19,12 @@ TEST_F(SpriteDrink, TwoDrinksWithSameNameAreEqual) {
   ASSERT_THAT(sprite, Eq(other));
 }
 
+TEST_F(SpriteDrink, TwoDrinksWithDifferentNameAreNotEqual) {
+  Drink other("coke");
+
+  ASSERT_THAT(sprite, Ne(other));
+}
+
 TEST_F(SpriteDrink, OstreamOfDrinkIsDrinksName) {
   std::stringstream stream;
 
