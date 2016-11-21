@@ -14,6 +14,14 @@ TEST_F(ALocalStock, LocalStockIsEmptyWhenCreated) {
   ASSERT_THAT(localStock.isEmpty(), Eq(true));
 }
 
+TEST_F(ALocalStock, LocalStockIsNotEmptyAfterAddingIngredient) {
+  Ingredient ingredient("ham");
+
+  localStock.add(ingredient);
+
+  ASSERT_THAT(localStock.isEmpty(), Eq(false));
+}
+
 TEST_F(ALocalStock, EmptyLocalStockDoesntContainIngreidient) {
   Ingredient ingredient("ham");
 

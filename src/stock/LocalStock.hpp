@@ -12,7 +12,7 @@ class LocalStock {
   std::vector<Ingredient> ingredients;
  public:
   bool isEmpty() {
-    return true;
+    return ingredients.empty();
   }
 
   bool contains(const Ingredient& ingredient) {
