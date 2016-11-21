@@ -4,23 +4,11 @@
 #define ORDERS_TODELIVER_H
 
 #include <vector>
+#include "../util/Singleton.hpp"
 #include "Shelf.hpp"
 
-class ToDeliver : public Shelf {
- private:
-  static ToDeliver* instance;
-
-  ToDeliver() {}
-
- public:
-  static ToDeliver* getInstance() {
-    if (!instance) {
-      instance = new ToDeliver();
-    }
-    return instance;
-  }
+class ToDeliver : public Singleton<ToDeliver>, public Shelf {
 };
 
-ToDeliver* ToDeliver::instance = nullptr;
 
 #endif  // ORDERS_TODELIVER_H
