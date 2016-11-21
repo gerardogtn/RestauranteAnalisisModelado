@@ -17,6 +17,13 @@ class Shelf {
   void addDrink(Drink drink) {
     drinks.push_back(drink);
   }
+
+  void removeDrink(Drink drink) {
+    auto pos = std::find(std::begin(drinks), std::end(drinks), drink);
+    if (pos != std::end(drinks)) {
+      drinks.erase(pos);
+    }
+  }
 };
 
 #endif  // ORDERS_SHELF_H

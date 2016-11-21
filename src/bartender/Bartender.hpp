@@ -2,12 +2,21 @@
 #ifndef BARTENDER_BARTENDER_H
 #define BARTENDER_BARTENDER_H
 
+#include <vector>
 #include "../food/Drink.hpp"
+#include "../orders/Shelf.hpp"
 
 class Bartender {
+ private:
+  Shelf* inputShelf;
+  Shelf* outputShelf;
+
  public:
+  Bartender(Shelf* in, Shelf* out) : inputShelf(in), outputShelf(out) {}
+
   void prepare(const Drink& drink) {
-    // stub
+    inputShelf->removeDrink(drink);
+    outputShelf->addDrink(drink);
   }
 };
 

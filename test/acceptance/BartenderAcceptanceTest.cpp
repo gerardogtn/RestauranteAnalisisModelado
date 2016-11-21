@@ -10,8 +10,10 @@
 using namespace testing;
 
 TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
-  Bartender bartender;
   Orders* orders = Orders::getInstance();
+  ToDeliver* toDeliver = ToDeliver::getInstance();
+  Bartender bartender(orders, toDeliver);
+
   Drink drink("sprite");
   orders->addDrink(drink);
 
