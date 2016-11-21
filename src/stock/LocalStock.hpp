@@ -2,10 +2,16 @@
 #ifndef STOCK_LOCALSTOCK_H
 #define STOCK_LOCALSTOCK_H
 
+#include "../food/Ingredient.hpp"
+
 class LocalStock {
  public:
   bool isEmpty() {
     return true;
+  }
+
+  bool contains(Ingredient ingredient) {
+    return false;
   }
 };
 
