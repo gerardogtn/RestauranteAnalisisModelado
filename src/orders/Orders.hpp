@@ -3,13 +3,11 @@
 #define ORDERS_ORDERS_H
 
 #include <vector>
-#include "../food/Drink.hpp"
+#include "Shelf.hpp"
 
-class Orders {
+class Orders : public Shelf {
  private:
   static Orders* instance;
-  std::vector<Drink> drinks;
-
   Orders() {}
 
  public:
@@ -18,14 +16,6 @@ class Orders {
       Orders::instance = new Orders();
     }
     return Orders::instance;
-  }
-
-  std::vector<Drink> getDrinks() const {
-    return this->drinks;
-  }
-
-  void addDrink(Drink drink) {
-    drinks.push_back(drink);
   }
 };
 

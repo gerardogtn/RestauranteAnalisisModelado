@@ -4,11 +4,11 @@
 #define ORDERS_TODELIVER_H
 
 #include <vector>
+#include "Shelf.hpp"
 
-class ToDeliver {
+class ToDeliver : public Shelf {
  private:
   static ToDeliver* instance;
-  std::vector<Drink> drinks;
 
   ToDeliver() {}
 
@@ -20,9 +20,6 @@ class ToDeliver {
     return instance;
   }
 
-  std::vector<Drink> getDrinks() {
-    return drinks;
-  }
 };
 
 ToDeliver* ToDeliver::instance = nullptr;
