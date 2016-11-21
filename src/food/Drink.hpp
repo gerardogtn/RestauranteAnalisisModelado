@@ -10,6 +10,10 @@ class Drink {
 
  public:
   explicit Drink(std::string name) : name(name) {}
+
+  bool operator==(const Drink& other) const {
+    return this->name == other.name;
+  }
 };
 
 #endif  // FOOD_DRINK_H
