@@ -8,6 +8,7 @@ set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 
 set(sources
    ../src/*/
+   ../src/food/Drink.cpp
    main.cpp)
 set(testSources
     acceptance/BartenderAcceptanceTest.cpp

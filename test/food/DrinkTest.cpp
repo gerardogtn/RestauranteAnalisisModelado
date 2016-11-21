@@ -1,5 +1,6 @@
 // Copyright 2016
 
+#include <sstream>
 #include "gmock/gmock.h"
 #include "../../src/food/Drink.hpp"
 
@@ -16,4 +17,12 @@ TEST_F(SpriteDrink, TwoDrinksWithSameNameAreEqual) {
   Drink other("sprite");
 
   ASSERT_THAT(sprite, Eq(other));
+}
+
+TEST_F(SpriteDrink, OstreamOfDrinkIsDrinksName) {
+  std::stringstream stream;
+
+  stream << sprite;
+
+  ASSERT_THAT(stream.str(), Eq("sprite"));
 }

@@ -2,6 +2,7 @@
 #ifndef FOOD_DRINK_H
 #define FOOD_DRINK_H
 
+#include <iostream>
 #include <string>
 
 class Drink {
@@ -12,8 +13,10 @@ class Drink {
   explicit Drink(std::string name) : name(name) {}
 
   bool operator==(const Drink& other) const {
-    return this->name == other.name;
+    return name == other.name;
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Drink& drink);
 };
 
 #endif  // FOOD_DRINK_H
