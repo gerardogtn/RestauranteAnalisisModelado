@@ -8,7 +8,7 @@
 class ToDeliver {
  private:
   static ToDeliver* instance;
-  std::vector<Drink*> drinks;
+  std::vector<Drink> drinks;
 
   ToDeliver() {}
 
@@ -20,7 +20,7 @@ class ToDeliver {
     return instance;
   }
 
-  std::vector<Drink*> getDrinks() {
+  std::vector<Drink> getDrinks() {
     return drinks;
   }
 };

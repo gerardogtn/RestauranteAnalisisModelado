@@ -13,10 +13,10 @@ TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
   Bartender bartender;
   Orders* orders = Orders::getInstance();
   Drink drink("sprite");
-  orders->addDrink(&drink);
+  orders->addDrink(drink);
 
   bartender.prepare(drink);
 
-  ASSERT_THAT(orders->getDrinks(), Not(Contains(&drink)));
-  ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(&drink));
+  ASSERT_THAT(orders->getDrinks(), Not(Contains(drink)));
+  ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(drink));
 }

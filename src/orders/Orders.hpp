@@ -8,7 +8,7 @@
 class Orders {
  private:
   static Orders* instance;
-  std::vector<Drink*> drinks;
+  std::vector<Drink> drinks;
 
   Orders() {}
 
@@ -20,11 +20,11 @@ class Orders {
     return Orders::instance;
   }
 
-  std::vector<Drink*> getDrinks() const {
+  std::vector<Drink> getDrinks() const {
     return this->drinks;
   }
 
-  void addDrink(Drink* drink) {
+  void addDrink(Drink drink) {
     drinks.push_back(drink);
   }
 };
