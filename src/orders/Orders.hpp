@@ -4,21 +4,11 @@
 
 #include <vector>
 #include "Shelf.hpp"
+#include "../util/Singleton.hpp"
 
-class Orders : public Shelf {
- private:
-  static Orders* instance;
-  Orders() {}
-
+class Orders : public Singleton<Orders>, public Shelf {
  public:
-  static Orders* getInstance() {
-    if (!instance) {
-      Orders::instance = new Orders();
-    }
-    return Orders::instance;
-  }
+  Orders() {}
 };
-
-Orders* Orders::instance = nullptr;
 
 #endif  // ORDERS_ORDERS_H

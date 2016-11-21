@@ -19,7 +19,6 @@ class ToDeliver : public Shelf {
     }
     return instance;
   }
-
 };
 
 ToDeliver* ToDeliver::instance = nullptr;
