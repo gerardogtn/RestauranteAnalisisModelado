@@ -22,3 +22,12 @@ TEST_F(AShelf, AddDrink) {
 
   ASSERT_THAT(aShelf->getDrinks(), Contains(drink));
 }
+
+
+TEST_F(AShelf, CanDeleteDrinkThatWasAdded) {
+  aShelf->addDrink(drink);
+
+  aShelf->removeDrink(drink);
+
+  ASSERT_THAT(aShelf->getDrinks(), Not(Contains(drink)));
+}
