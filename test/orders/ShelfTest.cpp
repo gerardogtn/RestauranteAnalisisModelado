@@ -41,3 +41,14 @@ TEST_F(AShelf, DeleteDrinkDeletesFirstMatch) {
   ASSERT_THAT(aShelf->getDrinks(), Contains(drink));
   ASSERT_THAT(aShelf->getDrinks().size(), Eq(1));
 }
+
+TEST_F(AShelf, DeleteDrinkThatIsNotThereDoesNothing) {
+  Drink other("coke");
+  aShelf->addDrink(other);
+
+  aShelf->removeDrink(drink);
+
+  ASSERT_THAT(aShelf->getDrinks(), Contains(other));
+  ASSERT_THAT(aShelf->getDrinks(), Not(Contains(drink)));
+  ASSERT_THAT(aShelf->getDrinks().size(), Eq(1));
+}
