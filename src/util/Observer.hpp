@@ -2,9 +2,10 @@
 #ifndef UTIL_OBSERVER_H
 #define UTIL_OBSERVER_H
 
+template <class Param>
 class Observer {
  public:
-  void notify() = 0;
+  virtual void notify(Param param) = 0;
 };
 
 #endif  // UTIL_OBSERVER_H

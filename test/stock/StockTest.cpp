@@ -3,6 +3,7 @@
 #include "gmock/gmock.h"
 #include "../../src/stock/Stock.hpp"
 #include "../../src/food/Ingredient.hpp"
+#include "../../src/util/Observer.hpp"
 
 using namespace testing;
 
@@ -72,4 +73,38 @@ TEST_F(ALocalStockWithAnIngredient, IngredientsBelowThresholdAreLowOfStock) {
 
   ASSERT_THAT(ingredients, Contains(ingredient));
   ASSERT_THAT(ingredients.size(), 1);
+}
+
+class MockLowStockObserver : public Observer<Ingredient> {
+ public:
+  MOCK_METHOD1(notify, void(Ingredient ingredient));
+};
+
+class ALocalStockWithNotifier : public Test {
+ public:
+  Stock stock;
+  Ingredient ingredient;
+  MockLowStockObserver* observer;
+  int lowerThanThreshold = 3;
+  int threshold = 5;
+  int higherThanThreshold = 10;
+
+  ALocalStockWithNotifier() : ingredient("ham") {
+    observer = new MockLowStockObserver();
+  }
+
+  void SetUp() override {
+    stock.setLowStockThreshold(threshold);
+    stock.addLowStockObserver(observer);
+  }
+
+  void TearDown() override {
+    stock.removeLowStockObserver(observer);
+    delete observer;
+  }
+};
+
+TEST_F(ALocalStockWithNotifier, NotificationIsReceivedWhenItemIsLowOfStock) {
+  EXPECT_CALL(*observer, notify(ingredient));
+  stock.add(ingredient, lowerThanThreshold);
 }
