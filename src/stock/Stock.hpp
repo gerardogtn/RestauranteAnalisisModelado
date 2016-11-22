@@ -1,6 +1,6 @@
 // Copyright 2016
-#ifndef STOCK_LOCALSTOCK_H
-#define STOCK_LOCALSTOCK_H
+#ifndef STOCK_STOCK_H
+#define STOCK_STOCK_H
 
 #include <exception>
 #include <map>
@@ -37,4 +37,4 @@ class Stock {
   }
 };
 
-#endif  // STOCK_LOCALSTOCK_H
+#endif  // STOCK_STOCK_H
