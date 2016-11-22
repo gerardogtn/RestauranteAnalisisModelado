@@ -1,8 +1,8 @@
 # User Stories
 
 ## Manager
-1. As a manager I want to be notified about out of stock products so that I can order more. (A0-1)
-2. As a manager I want to be notified about low stock of products so that I can order more. (A0-2)
+1. As a manager I want to be notified about out of stock products so that I can order more. (A0-1) *
+2. As a manager I want to be notified about low stock of products so that I can order more. (A0-2) *
 3. As a manager I want to be notified about spoiled products so that I can account for the monetary loss. (A0-3)
 4. As a manager I want to see the 10 most consumed products (beverages and food) so that I can make sure they are always available. (A0-4)
 5. As a manager I want to see all orders of products so that I can keep account on orders. (A0-5)
@@ -23,7 +23,7 @@
 
 
 ## Bartender
-1. As a bartender I want to see all beverage orders so that I can prepare them. (D0-1)
+1. As a bartender I want to see all beverage orders so that I can prepare them. (D0-1) *
 
 
 ## Cook
