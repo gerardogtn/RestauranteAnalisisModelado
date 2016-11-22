@@ -11,7 +11,8 @@ TEST(AStockOrder, CreatedOrderIsInPending) {
   StockOrderManager stockOrderManager(ingredientOrders);
   Ingredient ingredient("ham");
   int amount = 10;
-  StockOrder order(ingredient, amount);
+  StockOrder order;
+  order.add(ingredient, amount);
 
   stockOrderManager.order(order);
 

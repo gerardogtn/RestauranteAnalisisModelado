@@ -2,19 +2,22 @@
 #ifndef STOCKORDER_STOCKORDER_H
 #define STOCKORDER_STOCKORDER_H
 
+#include <map>
 #include "../food/Ingredient.hpp"
 
 class StockOrder {
  private:
-  Ingredient ingredient;
-  int amount;
+  std::map<Ingredient, int> ingredients;
  public:
-  StockOrder(Ingredient ingredient, int amount) : ingredient(ingredient),
-    amount(amount) {}
+  StockOrder() {}
   virtual ~StockOrder() {}
 
+  void add(Ingredient ingredient, int amount) {
+    ingredients[ingredient] += amount;
+  }
+
   bool operator==(const StockOrder& other) const {
-    return this->ingredient == other.ingredient && this->amount == other.amount;
+    return this->ingredients == other.ingredients;
   }
 
   bool operator!=(const StockOrder& other) const {
