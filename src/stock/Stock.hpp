@@ -2,6 +2,7 @@
 #ifndef STOCK_STOCK_H
 #define STOCK_STOCK_H
 
+#include <vector>
 #include <exception>
 #include <map>
 #include "../food/Ingredient.hpp"
@@ -34,6 +35,16 @@ class Stock {
     } else {
       throw std::runtime_error("Not enough ingredient to prepare");
     }
+  }
+
+  std::vector<Ingredient> getOutOfStock() {
+    std::vector<Ingredient> out;
+    for (auto it : ingredients) {
+      if (it.second == 0) {
+        out.push_back(it.first);
+      }
+    }
+    return out;
   }
 };
 

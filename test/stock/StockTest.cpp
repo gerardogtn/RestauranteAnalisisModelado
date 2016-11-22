@@ -1,4 +1,5 @@
 // Copyright 2016
+#include <vector>
 #include "gmock/gmock.h"
 #include "../../src/stock/Stock.hpp"
 #include "../../src/food/Ingredient.hpp"
@@ -52,4 +53,13 @@ TEST_F(ALocalStockWithAnIngredient, CanUseIngredientIfEnoughInExistence) {
 
   ASSERT_NO_THROW(localStock.use(ingredient, notEnough));
   ASSERT_ANY_THROW(localStock.use(ingredient, amount));
+}
+
+TEST_F(ALocalStockWithAnIngredient, IngredientsWithZeroAmountAreOutOfStock) {
+  localStock.add(ingredient, 0);
+
+  std::vector<Ingredient> ingredients = localStock.getOutOfStock();
+
+  ASSERT_THAT(ingredients, Contains(ingredient));
+  ASSERT_THAT(ingredients.size(), 1);
 }
