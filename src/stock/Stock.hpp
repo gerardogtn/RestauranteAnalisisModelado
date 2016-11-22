@@ -21,7 +21,7 @@ class Stock {
     for (auto i : ingredients) {
       int amount = i.second;
       if (amount == 0) {
-        // TODO:
+        noStockObservable.notify(i.first);
       } else if (amount < LOW_STOCK_THRESHOLD) {
         lowStockObservable.notify(i.first);
       }
@@ -43,6 +43,14 @@ class Stock {
 
   void removeLowStockObserver(Observer<Ingredient>* observer) {
     lowStockObservable.removeObserver(observer);
+  }
+
+  void addOutOfStockObserver(Observer<Ingredient>* observer) {
+    noStockObservable.addObserver(observer);
+  }
+
+  void removeOutOfStockObserver(Observer<Ingredient>* observer) {
+    noStockObservable.removeObserver(observer);
   }
 
   bool containsEnough(const Ingredient& ingredient, int amount) {

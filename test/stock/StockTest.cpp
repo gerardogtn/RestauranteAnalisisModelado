@@ -119,3 +119,28 @@ TEST_F(ALocalStockWithNotifier, NotificationIsNotReceivedWhenItemIsNotOnStock) {
   EXPECT_CALL(*observer, notify(ingredient)).Times(0);
   stock.add(ingredient, 0);
 }
+
+class ALocalStockWithOutOfStockObserver : public Test {
+ public:
+  Stock stock;
+  Ingredient ingredient;
+  MockLowStockObserver* observer;
+
+  ALocalStockWithOutOfStockObserver() : ingredient("ham") {
+    observer = new MockLowStockObserver();
+  }
+
+  void SetUp() override {
+    stock.addOutOfStockObserver(observer);
+  }
+
+  void TearDown() override {
+    stock.removeOutOfStockObserver(observer);
+    delete observer;
+  }
+};
+
+TEST_F(ALocalStockWithOutOfStockObserver, NotificationReceivedWhenOutOfStock) {
+  EXPECT_CALL(*observer, notify(ingredient));
+  stock.add(ingredient, 0);
+}
