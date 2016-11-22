@@ -5,6 +5,7 @@
 #include "../../src/orders/Shelf.hpp"
 #include "../../src/table/Table.hpp"
 #include "../../src/waiter/Waiter.hpp"
+#include "../../src/orders/ToDeliver.hpp"
 
 using namespace testing;
 
@@ -13,16 +14,11 @@ class ATable : public Test {
   Table table;
   Drink drink;
   Waiter waiter;
-  Shelf* aShelf = new Shelf();
+  Shelf* aShelf = Orders::getInstance();
 
   ATable() : table(1), drink("sprite"), waiter("Alejandro") {}
 
-  virtual ~ATable() {
-    delete aShelf;
-  }
-
   void SetUp() override {
-    waiter.setOrdersShelf(aShelf);
     table.setWaiter(&waiter);
   }
 };

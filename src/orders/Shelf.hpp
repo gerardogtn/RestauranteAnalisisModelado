@@ -16,7 +16,7 @@ class Shelf {
     return drinks;
   }
 
-  void addDrink(Drink drink, Table table) {
+  virtual void addDrink(Drink drink, Table table) {
     drinks.push_back(std::make_pair(drink, table));
   }
 

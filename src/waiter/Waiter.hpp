@@ -3,20 +3,23 @@
 #define WAITER_WAITER_H
 
 #include <string>
+#include <utility>
 #include "../orders/Shelf.hpp"
+#include "../orders/Orders.hpp"
 #include "../table/Table.hpp"
 
 class Waiter {
  private:
   std::string name;
-  Shelf* orders;
   Shelf* toDeliver;
 
- public:
-  explicit Waiter(std::string name) : name(name) {}
+  void deliver(std::pair<Drink, Table> pair) {
+    pair.second.deliver(pair.first);
+  }
 
-  void setOrdersShelf(Shelf* orders) {
-    this->orders = orders;
+ public:
+  explicit Waiter(std::string name) : name(name) {
+    toDeliver = new Shelf();
   }
 
   void setDeliveryShelf(Shelf* toDeliver) {
@@ -24,7 +27,13 @@ class Waiter {
   }
 
   void order(Drink drink, Table table) {
-    orders->addDrink(drink, table);
+    Orders::getInstance()->addDrink(drink, table);
+  }
+
+  void deliverAll() {
+    for (auto it : toDeliver->getDrinks()) {
+      deliver(it);
+    }
   }
 };
 

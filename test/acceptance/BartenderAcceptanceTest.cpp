@@ -9,7 +9,7 @@
 
 using namespace testing;
 
-TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
+TEST(ABartender, PreparedDrinkIsNotInOrders) {
   Orders* orders = Orders::getInstance();
   ToDeliver* toDeliver = ToDeliver::getInstance();
   Bartender bartender(orders, toDeliver);
@@ -21,5 +21,4 @@ TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
   bartender.prepareNext();
 
   ASSERT_THAT(orders->getDrinks(), Not(Contains(std::make_pair(drink, table))));
-  ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(std::make_pair(drink, table)));
 }

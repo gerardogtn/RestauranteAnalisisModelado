@@ -18,6 +18,10 @@ class Table {
 
   void order(Drink drink);
 
+  void deliver(Drink drink) {
+    // stub
+  }
+
   bool operator==(const Table& other) const {
     return this->num == other.num;
   }
