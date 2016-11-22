@@ -7,14 +7,21 @@
 
 using namespace testing;
 
-TEST(AStockOrder, CreatedOrderIsInPending) {
-  IngredientOrders* ingredientOrders = IngredientOrders::getInstance();
-  StockOrderManager stockOrderManager(ingredientOrders);
-  Ingredient ingredient("ham");
-  int amount = 10;
+class AStockOrderManager : public Test {
+ public:
+  Ingredient ingredient;
+  int amount;
   StockOrder order;
-  order.add(ingredient, amount);
+  IngredientOrders* ingredientOrders = IngredientOrders::getInstance();
+  StockOrderManager stockOrderManager;
 
+  AStockOrderManager() : ingredient("ham"), amount(10),
+    stockOrderManager(ingredientOrders) {
+      order.add(ingredient, amount);
+    }
+};
+
+TEST_F(AStockOrderManager, CreatedOrderIsInPending) {
   std::string key = stockOrderManager.order(order);
 
   ASSERT_THAT(ingredientOrders->contains(key), Eq(true));
