@@ -18,6 +18,7 @@ set(testSources
     food/DrinkTest.cpp
     stockorder/StockOrderTest.cpp
     table/TableTest.cpp
+    orders/ShelfTest.cpp
     )
 add_executable(tests ${testSources} ${sources})
 target_link_libraries(tests gmock)

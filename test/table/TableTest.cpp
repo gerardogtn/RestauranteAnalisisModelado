@@ -9,7 +9,7 @@
 using namespace testing;
 
 class ATable : public Test {
-public:
+ public:
   Table table;
   Drink drink;
   Waiter waiter;
@@ -29,6 +29,5 @@ public:
 
 TEST_F(ATable, CanOrderDrink) {
   table.order(drink);
-
   ASSERT_THAT(aShelf->getDrinks(), Contains(drink));
 }
