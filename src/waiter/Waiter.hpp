@@ -24,7 +24,7 @@ class Waiter {
   }
 
   void order(Drink drink, Table table) {
-    orders->addDrink(drink);
+    orders->addDrink(drink, table);
   }
 };
 

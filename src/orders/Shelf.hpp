@@ -3,23 +3,26 @@
 #define ORDERS_SHELF_H
 
 #include <vector>
+#include <utility>
 #include "../food/Drink.hpp"
+#include "../table/Table.hpp"
 
 class Shelf {
  protected:
-  std::vector<Drink> drinks;
+  std::vector<std::pair<Drink, Table>> drinks;
 
  public:
-  std::vector<Drink> getDrinks() {
+  std::vector<std::pair<Drink, Table>> getDrinks() {
     return drinks;
   }
 
-  void addDrink(Drink drink) {
-    drinks.push_back(drink);
+  void addDrink(Drink drink, Table table) {
+    drinks.push_back(std::make_pair(drink, table));
   }
 
-  void removeDrink(Drink drink) {
-    auto pos = std::find(std::begin(drinks), std::end(drinks), drink);
+  void removeDrink(Drink drink, Table table) {
+    auto pair = std::make_pair(drink, table);
+    auto pos = std::find(std::begin(drinks), std::end(drinks), pair);
     if (pos != std::end(drinks)) {
       drinks.erase(pos);
     }
