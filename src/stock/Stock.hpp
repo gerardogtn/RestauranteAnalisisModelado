@@ -24,7 +24,7 @@ class Stock {
   }
 
   void add(const Ingredient& ingredient, int amount) {
-    ingredients[ingredient] = amount;
+    ingredients[ingredient] += amount;
   }
 
   void use(const Ingredient& ingredient, int amount) {
