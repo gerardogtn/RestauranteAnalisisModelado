@@ -10,7 +10,7 @@
 7. As a manager I want to remove/add cooks/bartenders/chefs/cashiers so that I can fire/hire them. (A0-7)
 
 ## Stock
-1. As a stock employee I want to create orders of products so that we don't run out of stock. (B0-1)
+1. As a stock employee I want to create orders of products so that we don't run out of stock. (B0-1) *
 2. As a stock employee I want to receive products so that orders are fulfilled. (B0-2)
 3. As a stock employee I want to label products so that they have a valid expiration date. (B0-3)
 4. As a stock employee I want to view all pending orders so that I can nag the supplier. (B0-4)
