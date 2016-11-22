@@ -5,7 +5,7 @@
 2. As a manager I want to be notified about low stock of products so that I can order more. (A0-2) *
 3. As a manager I want to be notified about spoiled products so that I can account for the monetary loss. (A0-3)
 4. As a manager I want to see the 10 most consumed products (beverages and food) so that I can make sure they are always available. (A0-4)
-5. As a manager I want to see all orders of products so that I can keep account on orders. (A0-5)
+5. As a manager I want to see all orders of products so that I can keep account on orders. (A0-5) *
 6. As a manager I want to remove products that are not being sold. (A0-6)
 7. As a manager I want to remove/add cooks/bartenders/chefs/cashiers so that I can fire/hire them. (A0-7)
 

@@ -10,12 +10,14 @@ set(sources
    ../src/*/
    ../src/food/Drink.cpp
    ../src/stockorder/StockOrderKeyGenerator.cpp
+   ../src/table/Table.cpp
    main.cpp)
 set(testSources
     acceptance/BartenderAcceptanceTest.cpp
     stock/StockTest.cpp
     food/DrinkTest.cpp
     stockorder/StockOrderTest.cpp
+    table/TableTest.cpp
     )
 add_executable(tests ${testSources} ${sources})
 target_link_libraries(tests gmock)
