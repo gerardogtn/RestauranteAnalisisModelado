@@ -2,6 +2,7 @@
 #ifndef STOCKORDER_STOCKORDERMANAGER_H
 #define STOCKORDER_STOCKORDERMANAGER_H
 
+#include <string>
 #include "IngredientOrders.hpp"
 #include "StockOrder.hpp"
 
@@ -13,8 +14,8 @@ class StockOrderManager {
   explicit StockOrderManager(IngredientOrders* ingredientOrders) :
     ingredientOrders(ingredientOrders) {}
 
-  void order(StockOrder order) {
-    ingredientOrders->add(order);
+  std::string order(StockOrder order) {
+    return ingredientOrders->add(order);
   }
 };
 

@@ -1,5 +1,6 @@
 // Copyright 2016
 
+#include <string>
 #include "gmock/gmock.h"
 #include "../../src/stockorder/IngredientOrders.hpp"
 #include "../../src/stockorder/StockOrderManager.hpp"
@@ -14,7 +15,7 @@ TEST(AStockOrder, CreatedOrderIsInPending) {
   StockOrder order;
   order.add(ingredient, amount);
 
-  stockOrderManager.order(order);
+  std::string key = stockOrderManager.order(order);
 
-  ASSERT_THAT(ingredientOrders->contains(order), Eq(true));
+  ASSERT_THAT(ingredientOrders->contains(key), Eq(true));
 }

@@ -2,33 +2,36 @@
 #ifndef STOCKORDER_INGREDIENTORDERS_H
 #define STOCKORDER_INGREDIENTORDERS_H
 
-#include <utility>
-#include <vector>
+#include <map>
+#include <string>
 #include "../util/Singleton.hpp"
 #include "StockOrder.hpp"
+#include "StockOrderKeyGenerator.hpp"
 
 class IngredientOrders : public Singleton<IngredientOrders> {
  private:
-  std::vector<StockOrder> orders;
+  std::map<std::string, StockOrder> orders;
 
  public:
   IngredientOrders() {}
   virtual ~IngredientOrders() {}
 
-  void add(StockOrder order) {
-    orders.push_back(order);
+  std::string add(StockOrder order) {
+    std::string key = StockOrderKeyGenerator::generate();
+    orders[key] = order;
+    return key;
   }
 
-  bool contains(StockOrder order) {
-    auto it = std::find(std::begin(orders), std::end(orders), order);
-    return it != std::end(orders);
+  bool contains(std::string orderKey) {
+    auto pos = orders.find(orderKey);
+    return pos != orders.end();
   }
 
   void remove(StockOrder order) {
-    auto it = std::find(std::begin(orders), std::end(orders), order);
-    if (it != std::end(orders)) {
-      orders.erase(it);
-    }
+    // auto it = std::find(std::begin(orders), std::end(orders), order);
+    // if (it != std::end(orders)) {
+    //   orders.erase(it);
+    // }
   }
 };
 

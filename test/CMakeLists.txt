@@ -9,6 +9,7 @@ set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall")
 set(sources
    ../src/*/
    ../src/food/Drink.cpp
+   ../src/stockorder/StockOrderKeyGenerator.cpp
    main.cpp)
 set(testSources
     acceptance/BartenderAcceptanceTest.cpp
