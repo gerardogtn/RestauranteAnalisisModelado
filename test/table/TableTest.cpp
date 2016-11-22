@@ -8,16 +8,27 @@
 
 using namespace testing;
 
-TEST(ATable, CanOrderDrink) {
-  Table table(1);
-  Drink drink("sprite");
+class ATable : public Test {
+public:
+  Table table;
+  Drink drink;
+  Waiter waiter;
   Shelf* aShelf = new Shelf();
-  Waiter waiter("Alejandro");
-  waiter.setOrdersShelf(aShelf);
-  table.setWaiter(&waiter);
 
+  ATable() : table(1), drink("sprite"), waiter("Alejandro") {}
+
+  virtual ~ATable() {
+    delete aShelf;
+  }
+
+  void SetUp() override {
+    waiter.setOrdersShelf(aShelf);
+    table.setWaiter(&waiter);
+  }
+};
+
+TEST_F(ATable, CanOrderDrink) {
   table.order(drink);
 
   ASSERT_THAT(aShelf->getDrinks(), Contains(drink));
-  delete aShelf;
 }
