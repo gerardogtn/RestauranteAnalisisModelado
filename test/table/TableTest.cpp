@@ -29,5 +29,21 @@ class ATable : public Test {
 
 TEST_F(ATable, CanOrderDrink) {
   table.order(drink);
-  ASSERT_THAT(aShelf->getDrinks(), Contains(drink));
+  ASSERT_THAT(aShelf->getDrinks(), Contains(std::make_pair(drink, table)));
+}
+
+TEST(TwoTables, TwoTablesWithSameIdAreEqual) {
+  Table table(1);
+  Table other(1);
+
+  ASSERT_THAT(table == other, Eq(true));
+  ASSERT_THAT(table != other, Eq(false));
+}
+
+TEST(TwoTables, TwoTablesWithDifferentIdsAreNotEqual) {
+  Table table(1);
+  Table other(2);
+
+  ASSERT_THAT(table == other, Eq(false));
+  ASSERT_THAT(table != other, Eq(true));
 }

@@ -17,6 +17,14 @@ class Table {
   void setWaiter(Waiter* waiter);
 
   void order(Drink drink);
+
+  bool operator==(const Table& other) const {
+    return this->num == other.num;
+  }
+
+  bool operator!=(const Table& other) const {
+    return !(*this == other);
+  }
 };
 
 #endif  // TABLE_TABLE_H
