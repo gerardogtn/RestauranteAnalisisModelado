@@ -12,7 +12,7 @@ set(sources
    main.cpp)
 set(testSources
     acceptance/BartenderAcceptanceTest.cpp
-    acceptance/StockEmployeeAcceptanceTest.cpp
+    stock/StockTest.cpp
     food/DrinkTest.cpp
     )
 add_executable(tests ${testSources} ${sources})
