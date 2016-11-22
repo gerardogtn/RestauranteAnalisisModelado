@@ -14,9 +14,13 @@ class Bartender {
  public:
   Bartender(Shelf* in, Shelf* out) : inputShelf(in), outputShelf(out) {}
 
-  void prepare(const Drink& drink, const Table& table) {
-    inputShelf->removeDrink(drink, table);
-    outputShelf->addDrink(drink, table);
+  void prepareNext() {
+    auto drinks = inputShelf->getDrinks();
+    if (!drinks.empty()) {
+      auto drink = inputShelf->getDrinks()[0];
+      inputShelf->removeDrink(drink.first, drink.second);
+      outputShelf->addDrink(drink.first, drink.second);
+    }
   }
 };
 

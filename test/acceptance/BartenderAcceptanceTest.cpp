@@ -18,7 +18,7 @@ TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
   Drink drink("sprite");
   orders->addDrink(drink, table);
 
-  bartender.prepare(drink, table);
+  bartender.prepareNext();
 
   ASSERT_THAT(orders->getDrinks(), Not(Contains(std::make_pair(drink, table))));
   ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(std::make_pair(drink, table)));
