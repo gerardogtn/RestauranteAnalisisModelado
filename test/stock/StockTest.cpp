@@ -114,3 +114,8 @@ TEST_F(ALocalStockWithNotifier, NotificationIsNotReceivedWhenItemIsHighOnStock) 
   EXPECT_CALL(*observer, notify(ingredient)).Times(0);
   stock.add(ingredient, higherThanThreshold);
 }
+
+TEST_F(ALocalStockWithNotifier, NotificationIsNotReceivedWhenItemIsNotOnStock) {
+  EXPECT_CALL(*observer, notify(ingredient)).Times(0);
+  stock.add(ingredient, 0);
+}

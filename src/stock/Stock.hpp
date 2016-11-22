@@ -13,12 +13,16 @@ class Stock {
  private:
   std::map<Ingredient, int> ingredients;
   Observable<Ingredient> lowStockObservable;
+  Observable<Ingredient> noStockObservable;
   int LOW_STOCK_THRESHOLD = 2;
 
   void onIngredientAmountChanged() {
     std::cout << "On Ingredient amount changed \n";
     for (auto i : ingredients) {
-      if (i.second < LOW_STOCK_THRESHOLD) {
+      int amount = i.second;
+      if (amount == 0) {
+        // TODO:
+      } else if (amount < LOW_STOCK_THRESHOLD) {
         lowStockObservable.notify(i.first);
       }
     }
