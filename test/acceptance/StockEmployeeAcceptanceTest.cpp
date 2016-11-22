@@ -40,3 +40,16 @@ TEST_F(ALocalStockWithAnIngredient, NotEnoughWhenLessAmount) {
 
   ASSERT_THAT(localStock.containsEnough(ingredient, amount), Eq(false));
 }
+
+TEST_F(ALocalStockWithAnIngredient, CannotUseMoreIngredientThanInExistence) {
+  localStock.add(ingredient, notEnough);
+
+  ASSERT_ANY_THROW(localStock.use(ingredient, amount));
+}
+
+TEST_F(ALocalStockWithAnIngredient, CanUseIngredientIfEnoughInExistence) {
+  localStock.add(ingredient, amount);
+
+  ASSERT_NO_THROW(localStock.use(ingredient, notEnough));
+  ASSERT_ANY_THROW(localStock.use(ingredient, amount));
+}

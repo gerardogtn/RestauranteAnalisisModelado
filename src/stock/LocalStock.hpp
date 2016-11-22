@@ -2,6 +2,7 @@
 #ifndef STOCK_LOCALSTOCK_H
 #define STOCK_LOCALSTOCK_H
 
+#include <exception>
 #include <map>
 #include "../food/Ingredient.hpp"
 
@@ -23,6 +24,15 @@ class LocalStock {
 
   void add(const Ingredient& ingredient, int amount) {
     ingredients[ingredient] = amount;
+  }
+
+  void use(const Ingredient& ingredient, int amount) {
+    auto pos = ingredients.find(ingredient);
+    if (pos != ingredients.end() && pos->second >= amount) {
+      ingredients[ingredient] -= amount;
+    } else {
+      throw std::runtime_error("Not enough ingredient to prepare");
+    }
   }
 };
 
