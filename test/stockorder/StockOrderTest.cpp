@@ -2,6 +2,7 @@
 
 #include <string>
 #include "gmock/gmock.h"
+#include "../../src/stock/Stock.hpp"
 #include "../../src/stockorder/IngredientOrders.hpp"
 #include "../../src/stockorder/StockOrderManager.hpp"
 
@@ -12,17 +13,36 @@ class AStockOrderManager : public Test {
   Ingredient ingredient;
   int amount;
   StockOrder order;
+  Stock* stock = new Stock();
   IngredientOrders* ingredientOrders = IngredientOrders::getInstance();
   StockOrderManager stockOrderManager;
 
   AStockOrderManager() : ingredient("ham"), amount(10),
-    stockOrderManager(ingredientOrders) {
+    stockOrderManager(ingredientOrders, stock) {
       order.add(ingredient, amount);
     }
+
+  virtual ~AStockOrderManager() {
+    delete stock;
+  }
 };
 
 TEST_F(AStockOrderManager, CreatedOrderIsInPending) {
   std::string key = stockOrderManager.order(order);
 
   ASSERT_THAT(ingredientOrders->getPendingOrders(), Contains(key));
+}
+
+TEST_F(AStockOrderManager, ReceivedOrderIsNotPending) {
+  std::string key = stockOrderManager.order(order);
+
+  stockOrderManager.receive(key);
+  ASSERT_THAT(ingredientOrders->getPendingOrders(), Not(Contains(key)));
+}
+
+TEST_F(AStockOrderManager, ReceivedOrderModifiesStock) {
+  std::string key = stockOrderManager.order(order);
+
+  stockOrderManager.receive(key);
+  ASSERT_THAT(stock->containsEnough(ingredient, amount), Eq(true)); 
 }

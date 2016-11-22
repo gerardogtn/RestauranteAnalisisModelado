@@ -28,11 +28,15 @@ class IngredientOrders : public Singleton<IngredientOrders> {
     return pos != orders.end();
   }
 
-  void remove(StockOrder order) {
-    // auto it = std::find(std::begin(orders), std::end(orders), order);
-    // if (it != std::end(orders)) {
-    //   orders.erase(it);
-    // }
+  void remove(std::string key) {
+    auto it = orders.find(key);
+    if (it != orders.end()) {
+      orders.erase(it);
+    }
+  }
+
+  StockOrder get(std::string key) {
+    return orders[key];
   }
 
   std::vector<std::string> getPendingOrders() {

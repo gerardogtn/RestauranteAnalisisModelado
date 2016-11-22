@@ -16,6 +16,11 @@ class StockOrder {
     ingredients[ingredient] += amount;
   }
 
+  // TODO(gerardogtn): change for iterator
+  std::map<Ingredient, int> map() {
+    return ingredients;
+  }
+
   bool operator==(const StockOrder& other) const {
     return this->ingredients == other.ingredients;
   }
