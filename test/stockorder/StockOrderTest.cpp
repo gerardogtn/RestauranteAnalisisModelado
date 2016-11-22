@@ -24,5 +24,5 @@ class AStockOrderManager : public Test {
 TEST_F(AStockOrderManager, CreatedOrderIsInPending) {
   std::string key = stockOrderManager.order(order);
 
-  ASSERT_THAT(ingredientOrders->contains(key), Eq(true));
+  ASSERT_THAT(ingredientOrders->getPendingOrders(), Contains(key));
 }

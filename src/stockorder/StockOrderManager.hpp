@@ -17,6 +17,10 @@ class StockOrderManager {
   std::string order(StockOrder order) {
     return ingredientOrders->add(order);
   }
+
+  std::vector<std::string> getPendingOrders() {
+    return ingredientOrders->getPendingOrders();
+  }
 };
 
 #endif  // STOCKORDER_STOCKORDERMANAGER_H

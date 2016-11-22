@@ -2,6 +2,7 @@
 #ifndef STOCKORDER_INGREDIENTORDERS_H
 #define STOCKORDER_INGREDIENTORDERS_H
 
+#include <vector>
 #include <map>
 #include <string>
 #include "../util/Singleton.hpp"
@@ -32,6 +33,14 @@ class IngredientOrders : public Singleton<IngredientOrders> {
     // if (it != std::end(orders)) {
     //   orders.erase(it);
     // }
+  }
+
+  std::vector<std::string> getPendingOrders() {
+    std::vector<std::string> out;
+    for (auto order : orders) {
+      out.push_back(order.first);
+    }
+    return out;
   }
 };
 
