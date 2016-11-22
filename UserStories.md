@@ -13,7 +13,7 @@
 1. As a stock employee I want to create orders of products so that we don't run out of stock. (B0-1) *
 2. As a stock employee I want to receive products so that orders are fulfilled. (B0-2)
 3. As a stock employee I want to label products so that they have a valid expiration date. (B0-3)
-4. As a stock employee I want to view all pending orders so that I can nag the supplier. (B0-4)
+4. As a stock employee I want to view all pending orders so that I can nag the supplier. (B0-4) *
 5. As a stock employee I want to receive orders from branches so that I can send them supplies or order more from suppliers. (B0-5)
 
 
