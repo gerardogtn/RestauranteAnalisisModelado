@@ -6,9 +6,10 @@
 #include <map>
 #include "../food/Ingredient.hpp"
 
-class LocalStock {
+class Stock {
  private:
   std::map<Ingredient, int> ingredients;
+
  public:
   bool isEmpty() {
     return ingredients.empty();

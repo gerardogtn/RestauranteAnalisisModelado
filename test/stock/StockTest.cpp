@@ -1,13 +1,13 @@
 // Copyright 2016
 #include "gmock/gmock.h"
-#include "../../src/stock/LocalStock.hpp"
+#include "../../src/stock/Stock.hpp"
 #include "../../src/food/Ingredient.hpp"
 
 using namespace testing;
 
 class ALocalStockWithAnIngredient : public Test {
  public:
-  LocalStock localStock;
+  Stock localStock;
   Ingredient ingredient;
   int notEnough = 2;
   int amount = 3;
