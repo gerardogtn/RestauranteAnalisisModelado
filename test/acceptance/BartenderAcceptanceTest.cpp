@@ -13,12 +13,13 @@ TEST(ABartender, PreparedDrinkIsNotInDrinkOrdersAndIsOnReadyToDeliver) {
   Orders* orders = Orders::getInstance();
   ToDeliver* toDeliver = ToDeliver::getInstance();
   Bartender bartender(orders, toDeliver);
+  Table table(1);
 
   Drink drink("sprite");
-  orders->addDrink(drink);
+  orders->addDrink(drink, table);
 
-  bartender.prepare(drink);
+  bartender.prepare(drink, table);
 
-  ASSERT_THAT(orders->getDrinks(), Not(Contains(drink)));
-  ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(drink));
+  ASSERT_THAT(orders->getDrinks(), Not(Contains(std::make_pair(drink, table))));
+  ASSERT_THAT(ToDeliver::getInstance()->getDrinks(), Contains(std::make_pair(drink, table)));
 }
