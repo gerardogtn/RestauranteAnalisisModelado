@@ -10,10 +10,15 @@
 class Stock {
  private:
   std::map<Ingredient, int> ingredients;
+  int LOW_STOCK_THRESHOLD = 2;
 
  public:
   bool isEmpty() {
     return ingredients.empty();
+  }
+
+  void setLowStockThreshold(int threshold) {
+    LOW_STOCK_THRESHOLD = threshold;
   }
 
   bool containsEnough(const Ingredient& ingredient, int amount) {
@@ -35,6 +40,16 @@ class Stock {
     } else {
       throw std::runtime_error("Not enough ingredient to prepare");
     }
+  }
+
+  std::vector<Ingredient> getLowOfStock() {
+    std::vector<Ingredient> out;
+    for (auto i : ingredients) {
+      if (i.second < LOW_STOCK_THRESHOLD && i.second > 0) {
+        out.push_back(i.first);
+      }
+    }
+    return out;
   }
 
   std::vector<Ingredient> getOutOfStock() {

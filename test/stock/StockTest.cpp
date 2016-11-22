@@ -63,3 +63,13 @@ TEST_F(ALocalStockWithAnIngredient, IngredientsWithZeroAmountAreOutOfStock) {
   ASSERT_THAT(ingredients, Contains(ingredient));
   ASSERT_THAT(ingredients.size(), 1);
 }
+
+TEST_F(ALocalStockWithAnIngredient, IngredientsBelowThresholdAreLowOfStock) {
+  localStock.setLowStockThreshold(amount);
+  localStock.add(ingredient, notEnough);
+
+  std::vector<Ingredient> ingredients = localStock.getLowOfStock();
+
+  ASSERT_THAT(ingredients, Contains(ingredient));
+  ASSERT_THAT(ingredients.size(), 1);
+}
