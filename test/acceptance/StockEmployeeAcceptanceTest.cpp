@@ -5,32 +5,29 @@
 
 using namespace testing;
 
-class ALocalStock : public Test {
+class ALocalStockWithAnIngredient : public Test {
  public:
   LocalStock localStock;
+  Ingredient ingredient;
+
+  ALocalStockWithAnIngredient() : ingredient("ham") {}
 };
 
-TEST_F(ALocalStock, LocalStockIsEmptyWhenCreated) {
+TEST_F(ALocalStockWithAnIngredient, LocalStockIsEmptyWhenCreated) {
   ASSERT_THAT(localStock.isEmpty(), Eq(true));
 }
 
-TEST_F(ALocalStock, LocalStockIsNotEmptyAfterAddingIngredient) {
-  Ingredient ingredient("ham");
-
+TEST_F(ALocalStockWithAnIngredient, LocalStockIsNotEmptyAfterAddingIngredient) {
   localStock.add(ingredient);
 
   ASSERT_THAT(localStock.isEmpty(), Eq(false));
 }
 
-TEST_F(ALocalStock, EmptyLocalStockDoesntContainIngreidient) {
-  Ingredient ingredient("ham");
-
+TEST_F(ALocalStockWithAnIngredient, EmptyLocalStockDoesntContainIngreidient) {
   ASSERT_THAT(localStock.contains(ingredient), Eq(false));
 }
 
-TEST_F(ALocalStock, IngredientIsInStockAfterAddingIngredient) {
-  Ingredient ingredient("ham");
-
+TEST_F(ALocalStockWithAnIngredient, IngredientIsInStockAfterAddingIngredient) {
   localStock.add(ingredient);
 
   ASSERT_THAT(localStock.contains(ingredient), Eq(true));
