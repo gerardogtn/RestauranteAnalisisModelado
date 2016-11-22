@@ -17,6 +17,14 @@ class Ingredient {
   bool operator!=(const Ingredient& other) const {
     return !(*this == other);
   }
+
+  bool operator<(const Ingredient& other) const {
+    return this->name < other.name;
+  }
+
+  bool operator>(const Ingredient& other) const {
+    return this->name > other.name;
+  }
 };
 
 #endif  // FOOD_INGREDIENT_H

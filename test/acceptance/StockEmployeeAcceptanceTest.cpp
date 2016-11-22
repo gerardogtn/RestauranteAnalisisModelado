@@ -9,6 +9,8 @@ class ALocalStockWithAnIngredient : public Test {
  public:
   LocalStock localStock;
   Ingredient ingredient;
+  int notEnough = 2;
+  int amount = 3;
 
   ALocalStockWithAnIngredient() : ingredient("ham") {}
 };
@@ -18,17 +20,23 @@ TEST_F(ALocalStockWithAnIngredient, LocalStockIsEmptyWhenCreated) {
 }
 
 TEST_F(ALocalStockWithAnIngredient, LocalStockIsNotEmptyAfterAddingIngredient) {
-  localStock.add(ingredient);
+  localStock.add(ingredient, amount);
 
   ASSERT_THAT(localStock.isEmpty(), Eq(false));
 }
 
-TEST_F(ALocalStockWithAnIngredient, EmptyLocalStockDoesntContainIngreidient) {
-  ASSERT_THAT(localStock.contains(ingredient), Eq(false));
+TEST_F(ALocalStockWithAnIngredient, NotEnoughWhenNoIngredient) {
+  ASSERT_THAT(localStock.containsEnough(ingredient, amount), Eq(false));
 }
 
-TEST_F(ALocalStockWithAnIngredient, IngredientIsInStockAfterAddingIngredient) {
-  localStock.add(ingredient);
+TEST_F(ALocalStockWithAnIngredient, EnoughWhenExactlySameAmount) {
+  localStock.add(ingredient, amount);
 
-  ASSERT_THAT(localStock.contains(ingredient), Eq(true));
+  ASSERT_THAT(localStock.containsEnough(ingredient, amount), Eq(true));
+}
+
+TEST_F(ALocalStockWithAnIngredient, NotEnoughWhenLessAmount) {
+  localStock.add(ingredient, notEnough);
+
+  ASSERT_THAT(localStock.containsEnough(ingredient, amount), Eq(false));
 }
